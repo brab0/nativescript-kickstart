@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sudo true
 
 [ "$(which npm)" != "" ] && has_npm=true || has_npm=false
@@ -20,7 +20,7 @@ fi
 #if [ $has_npm == false ]; then
   read -p "This project requires NPM to work properly. Shall we install it for you \(y/n\)? " answer
   case ${answer:0:1} in
-      y|Y )
+      [y|Y] )
           echo "Installing NPM..."
           curl -L https://www.npmjs.com/install.sh | sh
           echo "...NPM version $(npm --version) installed!"

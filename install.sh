@@ -34,20 +34,16 @@ fi
 
 #if [ $has_node == false ]; then
   read -p "This project requires NodeJs to work properly. Shall we install it for you \(y/n\)? " answer
-  case ${answer:0:1} in
-      y|Y )
-          echo "Installing NodeJs..."
-          npm cache clean -f
-          npm install -g n
-          n stable
-          clear
-          echo "...NodeJs version $(node --version) installed!"
-      ;;
-      * )
-          echo "No, I will do it for my self!"
-          break
-      ;;
-  esac
+  if [$answer == [y|Y]]; then
+      echo "Installing NodeJs..."
+      npm cache clean -f
+      npm install -g n
+      n stable
+      clear
+      echo "...NodeJs version $(node --version) installed!"
+  else
+      echo "No, I will do it for my self!"
+  fi
 #fi
 
 #if [ $has_tns == false ]; then

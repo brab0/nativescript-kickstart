@@ -126,20 +126,19 @@ if [ $has_project == false ]; then
 fi
 
 read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
-  case ${answer:0:1} in
-    y|Y)
-        read -p "Type the repositorys url: " input_variable
+case ${answer:0:1} in y|Y )
+      read -p "Type the repositorys url: " input_variable
 
-        git remote rename origin upstream
-        git remote add origin $input_variable
-        git push origin master
+      git remote rename origin upstream
+      git remote add origin $input_variable
+      git push origin master
 
-        clear
-        echo "...your project was successfully pushed!"
-    ;;
-    * )
-        echo "Not yet!"
-    ;;
+      clear
+      echo "...your project was successfully pushed!"
+  ;;
+  * )
+      echo "Not yet!"
+  ;;
 esac
 
 read -p "Do you wanna install the projects dependencies now \(y/n\)? " answer
@@ -181,4 +180,3 @@ if [ "$os" == "ios" ]; then
 fi
 
 echo "Enjoy!"
-

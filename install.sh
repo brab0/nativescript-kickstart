@@ -21,7 +21,7 @@ fi
     read -p "This project requires NPM to work properly. Shall we install it for you [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         echo "Installing NPM..."
-        curl -L https://www.npmjs.com/install.sh | sh
+        sudo curl -L https://www.npmjs.com/install.sh | sh
         echo "...NPM version $(npm --version) installed!"
     else
         echo "No, I will do it for my self!"
@@ -46,7 +46,7 @@ fi
     read -p "This project requires NativeScript to work properly. Do you wanna install it globally [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         echo "Installing NativeScript..."
-        npm install -g nativescript
+        sudo npm install -g nativescript
         clear
         echo "...TNS version $(tns --version) installed!"
     else
@@ -67,7 +67,7 @@ fi
                     echo "Installing Homebrew..."
                     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
                     echo "Installing GIT..."
-                    brew install git
+                    sudo brew install git
                 fi
             else
                 echo "All right!"              
@@ -81,9 +81,9 @@ fi
 #fi
 
 #if [ $has_project == false ]; then
-    read -p "Do you wanna clone this NativeScript Kickstart project from Github repository \(y/n\)? " answer < /dev/tty
+    read -p "Do you wanna clone this NativeScript Kickstart project from Github repository [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
-        read -p "Do you wanna change the directorys name \($repo\)? \(y/n\)? " answer < /dev/tty
+        read -p "Do you wanna change the directorys name ($repo)? [y/n]? " answer < /dev/tty
         if [ "$answer" == [Yy]* ]; then
             read -p "Type the new name: " repo < /dev/tty
         else
@@ -98,5 +98,54 @@ fi
         echo "=("
     fi
 #fi
+
+if [ $has_git == true ]; then
+    read -p "Do you wanna link this project to another remote Git repository [y/n]? " answer < /dev/tty
+    if [ "$answer" == [Yy]* ]; then
+        read -p "Type the repositorys url: " input_variable < /dev/tty
+        git remote rename origin upstream
+        git remote add origin $input_variable
+        git push origin master
+        clear
+        echo "...your project was successfully pushed!"
+    else
+        echo "Not yet!"
+        break
+    fi
+fi
+
+if [ $has_npm == true ]; then
+    read -p "Do you wanna install the projects dependencies now [y/n]? " answer < /dev/tty
+    if [ "$answer" == [Yy]* ]; then
+        npm install
+        clear
+        echo "...repository cloned!"
+    else
+        echo "Ill do it later!"
+        break
+    fi
+fi
+
+if [ $has_tns == true ]; then
+    read -p "Do you wanna add Androids platform to the project [y/n]? " answer < /dev/tty
+    if [ "$answer" == [Yy]* ]; then
+        tns platform add android
+        clear
+        echo "...Androids platform added!"
+    else        
+        echo "Not really!"
+    fi
+fi
+
+if [ "$os" == "ios" &&  $has_tns == true ]; then
+    read -p "Do you wanna add iOSs platform to the project [y/n]? " answer < /dev/tty
+    if [ "$answer" == [Yy]* ]; then
+        sudo tns platform add ios
+        clear
+        echo "iOSs platform added!"
+    else
+        echo "No, Thanks!"
+    fi 
+fi
 
 echo "Enjoy!"

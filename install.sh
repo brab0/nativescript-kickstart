@@ -62,6 +62,7 @@ if [ $has_tns == false ]; then
       ;;
       * )
         echo "No, I will do it for my self!"
+        break
       ;;
   esac
 fi
@@ -85,6 +86,7 @@ if [ $has_git == false ]; then
                 ;;
                 * )
                 echo "No, I will do it for my self!"
+                break
                 ;;
             esac
           fi
@@ -110,6 +112,7 @@ if [ $has_project == false ]; then
             ;;
             * )
               echo "No, the current name is fine!"
+              break
             ;;
         esac
         git clone "https://github.com/brab0/nativescript-kickstart $repo"
@@ -119,6 +122,7 @@ if [ $has_project == false ]; then
       ;;
       * )
         echo "No, thanks!"
+        break
       ;;
   esac
 fi
@@ -134,6 +138,7 @@ case ${answer:0:1} in y|Y )
   ;;
   * )
       echo "Not yet!"
+      break
   ;;
 esac
 
@@ -146,6 +151,7 @@ case ${answer:0:1} in
     ;;
     * )
         echo "Ill do it later!"
+        break
     ;;
 esac
 
@@ -158,6 +164,7 @@ case ${answer:0:1} in
     ;;
     * )
         echo "Not really!"
+        break
     ;;
 esac
 
@@ -171,6 +178,7 @@ if [ "$os" == "ios" ]; then
       ;;
       * )
         echo "No, Thanks!"
+        break
       ;;
   esac
 fi

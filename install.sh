@@ -130,14 +130,13 @@ fi
 read -p "Do you wanna link this project to another remote Git repository (y/n)? " answer
   case ${answer:0:1} in
     y|Y )
+        #read -p "Type the repository's url: " input_variable
 
-        read -p "Type the repository's url: " input_variable
+        #sudo git remote rename origin upstream
+        #sudo git remote add origin $input_variable
+        #sudo git push origin master
 
-        sudo git remote rename origin upstream
-        sudo git remote add origin $input_variable
-        sudo git push origin master
-
-        clear
+        #clear
         echo "...your project was successfully pushed!"
     ;;
     * )

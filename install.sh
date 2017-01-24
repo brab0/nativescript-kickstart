@@ -127,7 +127,7 @@ fi
 
 read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
   case ${answer:0:1} in
-    y|Y \)
+    y|Y|yes \)
         read -p "Type the repository\'s url: " input_variable
 
         git remote rename origin upstream

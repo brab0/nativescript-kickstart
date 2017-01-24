@@ -19,7 +19,7 @@ fi
 
 if [ $has_npm == false ]; then
     read -p "This project requires NPM. Do you wanna install it [y/n]? " answer < /dev/tty
-    if [ "$answer" == [Yy]* ]; then
+    if [[ "$answer" == [Yy]* ]]; then
         echo "Installing NPM..."
         sudo curl -L https://www.npmjs.com/install.sh | sh
         echo "...NPM version $(npm --version) installed!"
@@ -30,7 +30,7 @@ fi
 
 if [ $has_node == false ]; then
     read -p "This project requires NodeJs. Do you wanna install it [y/n]? " answer < /dev/tty
-    if [ "$answer" == [Yy]* ]; then
+    if [[ "$answer" == [Yy]* ]]; then
         echo "Installing NodeJs..."
         sudo npm cache clean -f
         sudo npm install -g n
@@ -44,7 +44,7 @@ fi
 
 if [ $has_tns == false ]; then
     read -p "This project requires NativeScript(tns). Do you wanna install it globally [y/n]? " answer < /dev/tty
-    if [ "$answer" == [Yy]* ]; then
+    if [[ "$answer" == [Yy]* ]]; then
         echo "Installing NativeScript..."
         sudo npm install -g nativescript
         clear
@@ -56,14 +56,14 @@ fi
 
 if [ $has_git == false ]; then
     read -p "Do you wanna install Git [y/n]? " answer < /dev/tty
-    if [ "$answer" == [Yy]* ]; then
+    if [[ "$answer" == [Yy]* ]]; then
         if [ "$os" == "linux" ]; then
             sudo apt-get update
             sudo apt-get install git-all
         elif [ "$os" == "ios" ]; then
             if [ $has_brew == false ]; then
                 read -p "You need to install Homebrew. Do you want we install it for you [y/n]? " answer < /dev/tty
-                if [ "$answer" == [Yy]* ]; then
+                if [[ "$answer" == [Yy]* ]]; then
                     echo "Installing Homebrew..."
                     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
                     echo "Installing GIT..."
@@ -85,9 +85,9 @@ fi
 if [ $has_project == false ]; then
     if [ $has_git == true ]; then
         read -p "Do you wanna clone this NativeScript Kickstart project from Github repository [y/n]? " answer < /dev/tty
-        if [ "$answer" == [Yy]* ]; then
+        if [[ "$answer" == [Yy]* ]]; then
             read -p "Do you wanna change the directory's name ($repo)? [y/n]? " answer < /dev/tty
-            if [ "$answer" == [Yy]* ]; then
+            if [[ "$answer" == [Yy]* ]]; then
                 read -p "Type the new name: " repo < /dev/tty
             else
                 echo "No, the current name is fine!"
@@ -107,7 +107,7 @@ fi
 
 if [ $has_project == true ]; then
     read -p "Do you wanna link this project to another remote Git repository [y/n]? " answer < /dev/tty
-    if [ "$answer" == [Yy]* ]; then
+    if [[ "$answer" == [Yy]* ]]; then
         read -p "Type the repositorys url: " input_variable < /dev/tty
         git remote rename origin upstream
         git remote add origin $input_variable
@@ -122,7 +122,7 @@ fi
 if [ $has_project == true ]; then
     if [ $has_npm == true ]; then
         read -p "Do you wanna install the project's dependencies now [y/n]? " answer < /dev/tty
-        if [ "$answer" == [Yy]* ]; then
+        if [[ "$answer" == [Yy]* ]]; then
             npm install
             clear
             echo "...all dependencies installed!"
@@ -135,9 +135,9 @@ if [ $has_project == true ]; then
 fi
 
 if [ $has_project == true ]; then
-    if [ $has_tns == true ]
+    if [ $has_tns == true ]; then
         read -p "Do you wanna add Android platform to the project [y/n]? " answer < /dev/tty
-        if [ "$answer" == [Yy]* ]; then
+        if [[ "$answer" == [Yy]* ]]; then
             tns platform add android
             clear
             echo "...Android platform added!"
@@ -147,7 +147,7 @@ if [ $has_project == true ]; then
         
         if [ "$os" == "ios" ]; then
             read -p "Do you wanna add iOS platform to the project [y/n]? " answer < /dev/tty
-            if [ "$answer" == [Yy]* ]; then
+            if [[ "$answer" == [Yy]* ]]; then
                 sudo tns platform add ios
                 clear
                 echo "iOS platform added!"

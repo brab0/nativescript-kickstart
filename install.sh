@@ -101,31 +101,31 @@ if [ $has_git == false ]; then
   esac
 fi
 
-if [ $has_project == false ]; then
-  read -p "Do you wanna clone this NativeScript Kickstart project from Github's repository (y/n)? " answer
-  case ${answer:0:1} in
-      y|Y )
-        read -p "Do you wanna change the directory's name ($repo)? (y/n)? " answer
-        case ${answer:0:1} in
-            y|Y )
-              read -p "Type the new name: " repo
-            ;;
-            * )
-              echo "No, the current name is fine!"
-            ;;
-        esac
+#if [ $has_project == false ]; then
+#  read -p "Do you wanna clone this NativeScript Kickstart project from Github's repository (y/n)? " answer
+#  case ${answer:0:1} in
+#      y|Y )
+#        read -p "Do you wanna change the directory's name ($repo)? (y/n)? " answer
+#        case ${answer:0:1} in
+#            y|Y )
+#              read -p "Type the new name: " repo
+#            ;;
+#            * )
+#              echo "No, the current name is fine!"
+#            ;;
+#        esac
 
-        git clone "https://github.com/brab0/nativescript-kickstart $repo"
-        cd $repo
-        clear
-        echo "...repository cloned!"
+#        git clone "https://github.com/brab0/nativescript-kickstart $repo"
+#        cd $repo
+#        clear
+#        echo "...repository cloned!"
 
-      ;;
-      * )
-        echo "No, thanks!"
-      ;;
-  esac
-fi
+#      ;;
+#      * )
+#        echo "No, thanks!"
+#      ;;
+#  esac
+#fi
 
 read -p "Do you wanna link this project to another remote Git repository (y/n)? " answer
   case ${answer:0:1} in

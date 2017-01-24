@@ -80,7 +80,7 @@ fi
     fi
 #fi
 
-#if [ $has_project == false ]; then
+#if [[ $has_project == false ] && [ $has_git == true ]]; then
     read -p "Do you wanna clone this NativeScript Kickstart project from Github repository [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         read -p "Do you wanna change the directorys name ($repo)? [y/n]? " answer < /dev/tty
@@ -99,7 +99,7 @@ fi
     fi
 #fi
 
-if [ $has_git == true ]; then
+if [[ $has_git == true ] && [ $has_project == false ]]; then
     read -p "Do you wanna link this project to another remote Git repository [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         read -p "Type the repositorys url: " input_variable < /dev/tty
@@ -110,11 +110,10 @@ if [ $has_git == true ]; then
         echo "...your project was successfully pushed!"
     else
         echo "Not yet!"
-        break
     fi
 fi
 
-if [ $has_npm == true ]; then
+if [[ $has_npm == true ] && [ $has_project == true ]]; then
     read -p "Do you wanna install the projects dependencies now [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         npm install
@@ -126,7 +125,7 @@ if [ $has_npm == true ]; then
     fi
 fi
 
-if [ $has_tns == true ]; then
+if [[ $has_tns == true ] && [ $has_project == true ]]; then
     read -p "Do you wanna add Androids platform to the project [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         tns platform add android
@@ -137,7 +136,7 @@ if [ $has_tns == true ]; then
     fi
 fi
 
-if [ "$os" == "ios" &&  $has_tns == true ]; then
+if [[ "$os" == "ios" ] && [ $has_tns == true ] && [ $has_project == true ]]; then
     read -p "Do you wanna add iOSs platform to the project [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         sudo tns platform add ios

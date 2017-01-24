@@ -1,4 +1,5 @@
 #!/bin/sh
+
 sudo true
 
 [ "$(which npm)" != "" ] && has_npm=true || has_npm=false
@@ -6,7 +7,6 @@ sudo true
 [ "$(which git)" != "" ] && has_git=true || has_git=false
 [ "$(which tns)" != "" ] && has_tns=true || has_tns=false
 [ "$(which brew)" != "" ] && has_brew=true || has_brew=false
-
 [ -d ".git" ] && has_project=true || has_project=false
 
 os=null
@@ -80,7 +80,6 @@ if [ $has_git == false ]; then
                 y|Y )
                 echo "Installing Homebrew..."
                 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
                 echo "Installing GIT..."
                 brew install git
                 ;;
@@ -90,7 +89,6 @@ if [ $has_git == false ]; then
             esac
           fi
         fi
-
         clear
         echo "...$(git --version) installed!"
       ;;
@@ -128,11 +126,9 @@ fi
 read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
 case ${answer:0:1} in y|Y )
       read -p "Type the repositorys url: " input_variable
-
       git remote rename origin upstream
       git remote add origin $input_variable
       git push origin master
-
       clear
       echo "...your project was successfully pushed!"
   ;;

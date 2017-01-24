@@ -93,7 +93,7 @@ if [ $has_project == false ]; then
                 echo "No, the current name is fine!"
             fi
 
-            sudo git clone "https://github.com/brab0/nativescript-kickstart $repo"            
+            sudo git clone https://github.com/brab0/nativescript-kickstart $repo            
             cd $repo
             has_project=true
             clear

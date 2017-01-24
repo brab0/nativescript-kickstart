@@ -128,7 +128,8 @@ if [ $has_project == false ]; then
 fi
 
 read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
-case ${answer:0:1} in y|Y )
+case ${answer:0:1} in
+   y|Y )
       read -p "Type the repositorys url: " input_variable
       git remote rename origin upstream
       git remote add origin $input_variable

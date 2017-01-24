@@ -17,7 +17,7 @@ else
   os="ios"
 fi
 
-if [ $has_npm == false ]; then
+#if [ $has_npm == false ]; then
   read -p "This project requires NPM to work properly. Shall we install it for you \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
@@ -30,9 +30,9 @@ if [ $has_npm == false ]; then
           break
       ;;
   esac
-fi
+#fi
 
-if [ $has_node == false ]; then
+#if [ $has_node == false ]; then
   read -p "This project requires NodeJs to work properly. Shall we install it for you \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
@@ -48,9 +48,9 @@ if [ $has_node == false ]; then
           break
       ;;
   esac
-fi
+#fi
 
-if [ $has_tns == false ]; then
+#if [ $has_tns == false ]; then
   read -p "Do you wanna install NativeScript globally \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
@@ -64,9 +64,9 @@ if [ $has_tns == false ]; then
         break
       ;;
   esac
-fi
+#fi
 
-if [ $has_git == false ]; then
+#if [ $has_git == false ]; then
   read -p "Do you wanna install Git \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
@@ -98,9 +98,9 @@ if [ $has_git == false ]; then
         break
       ;;
   esac
-fi
+#fi
 
-if [ $has_project == false ]; then
+#if [ $has_project == false ]; then
   read -p "Do you wanna clone this NativeScript Kickstart project from Github repository \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
@@ -124,63 +124,6 @@ if [ $has_project == false ]; then
         break
       ;;
   esac
-fi
-
-read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
-case ${answer:0:1} in
-   y|Y )
-      read -p "Type the repositorys url: " input_variable
-      git remote rename origin upstream
-      git remote add origin $input_variable
-      git push origin master
-      clear
-      echo "...your project was successfully pushed!"
-  ;;
-  * )
-      echo "Not yet!"
-      break
-  ;;
-esac
-
-read -p "Do you wanna install the projects dependencies now \(y/n\)? " answer
-case ${answer:0:1} in
-    y|Y )
-        npm install
-        clear
-        echo "...repository cloned!"
-    ;;
-    * )
-        echo "Ill do it later!"
-        break
-    ;;
-esac
-
-read -p "Do you wanna add Androids platform to the project \(y/n\)? " answer
-case ${answer:0:1} in
-    y|Y )
-        tns platform add android
-        clear
-        echo "...Androids platform added!"
-    ;;
-    * )
-        echo "Not really!"
-        break
-    ;;
-esac
-
-if [ "$os" == "ios" ]; then
-  read -p "Do you wanna add iOSs platform to the project \(y/n\)? " answer
-  case ${answer:0:1} in
-      y|Y )
-        sudo tns platform add ios
-        clear
-        echo "iOSs platform added!"
-      ;;
-      * )
-        echo "No, Thanks!"
-        break
-      ;;
-  esac
-fi
+#fi
 
 echo "Enjoy!"

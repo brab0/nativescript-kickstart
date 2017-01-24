@@ -127,7 +127,7 @@ if [ $has_project == true ]; then
             clear
             echo "...repository cloned!"
         else
-            echo "Ill do it later!"
+            echo "I'll do it later!"
         fi
     else
         echo "We cannot install the project's depencies 'cause you don't have npm installed...I told you!"
@@ -146,11 +146,11 @@ if [ $has_project == true ]; then
         fi
         
         if [ "$os" == "ios" ]; then
-            read -p "Do you wanna add iOSs platform to the project [y/n]? " answer < /dev/tty
+            read -p "Do you wanna add iOS platform to the project [y/n]? " answer < /dev/tty
             if [ "$answer" == [Yy]* ]; then
                 sudo tns platform add ios
                 clear
-                echo "iOSs platform added!"
+                echo "iOS platform added!"
             else
                 echo "No, Thanks!"
             fi 

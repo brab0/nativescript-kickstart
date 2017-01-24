@@ -93,8 +93,9 @@ if [ $has_project == false ]; then
                 echo "No, the current name is fine!"
             fi
 
-            git clone "https://github.com/brab0/nativescript-kickstart $repo"
+            sudo git clone "https://github.com/brab0/nativescript-kickstart $repo"            
             cd $repo
+            has_project=true
             clear
             echo "...repository cloned!"
         else  
@@ -109,9 +110,9 @@ if [ $has_project == true ]; then
     read -p "Do you wanna link this project to another remote Git repository [y/n]? " answer < /dev/tty
     if [[ "$answer" == [Yy]* ]]; then
         read -p "Type the repositorys url: " input_variable < /dev/tty
-        git remote rename origin upstream
-        git remote add origin $input_variable
-        git push origin master
+        sudo git remote rename origin upstream
+        sudo git remote add origin $input_variable
+        sudo git push origin master
         clear
         echo "...your project was successfully pushed to another repository!"
     else
@@ -123,7 +124,7 @@ if [ $has_project == true ]; then
     if [ $has_npm == true ]; then
         read -p "Do you wanna install the project's dependencies now [y/n]? " answer < /dev/tty
         if [[ "$answer" == [Yy]* ]]; then
-            npm install
+            sudo npm install
             clear
             echo "...all dependencies installed!"
         else
@@ -148,7 +149,7 @@ if [ $has_project == true ]; then
         if [ "$os" == "ios" ]; then
             read -p "Do you wanna add iOS platform to the project [y/n]? " answer < /dev/tty
             if [[ "$answer" == [Yy]* ]]; then
-                sudo tns platform add ios
+                tns platform add ios
                 clear
                 echo "iOS platform added!"
             else

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sudo true
 
 [ "$(which npm)" != "" ] && has_npm=true || has_npm=false
@@ -10,20 +10,20 @@ sudo true
 [ -d ".git" ] && has_project=true || has_project=false
 
 os=null
-repo='nativescript-kickstart'
+repo="nativescript-kickstart"
 
 if [ "$OSTYPE" == "linux-gnu" ]; then
-  os='linux'
+  os="linux"
 else
-  os='ios'
+  os="ios"
 fi
 
 if [ $has_npm == false ]; then
   read -p "This project requires NPM to work properly. Shall we install it for you \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
-          echo 'Installing NPM...'
-          sudo curl -L https://www.npmjs.com/install.sh | sh
+          echo "Installing NPM..."
+          curl -L https://www.npmjs.com/install.sh | sh
           echo "...NPM version $(npm --version) installed!"
       ;;
       * )
@@ -37,10 +37,10 @@ if [ $has_node == false ]; then
   read -p "This project requires NodeJs to work properly. Shall we install it for you \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
-          echo 'Installing NodeJs...'
-          sudo npm cache clean -f
-          sudo npm install -g n
-          sudo n stable
+          echo "Installing NodeJs..."
+          npm cache clean -f
+          npm install -g n
+          n stable
           clear
           echo "...NodeJs version $(node --version) installed!"
       ;;
@@ -55,8 +55,8 @@ if [ $has_tns == false ]; then
   read -p "Do you wanna install NativeScript globally \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
-        echo 'Installing NativeScript...'
-        sudo npm install -g nativescript
+        echo "Installing NativeScript..."
+        npm install -g nativescript
         clear
         echo "...TNS version $(tns --version) installed!"
       ;;
@@ -78,11 +78,11 @@ if [ $has_git == false ]; then
             read -p "You need to install Homebrew. Do you want we install it for you \(y/n\)? " answer
             case ${answer:0:1} in
                 y|Y )
-                echo 'Installing Homebrew...'
-                sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                echo "Installing Homebrew..."
+                /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-                echo 'Installing GIT...'
-                sudo brew install git
+                echo "Installing GIT..."
+                brew install git
                 ;;
                 * )
                 echo "No, I will do it for my self!"
@@ -102,10 +102,10 @@ if [ $has_git == false ]; then
 fi
 
 if [ $has_project == false ]; then
-  read -p "Do you wanna clone this NativeScript Kickstart project from Github's repository \(y/n\)? " answer
+  read -p "Do you wanna clone this NativeScript Kickstart project from Github\'s repository \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
-        read -p "Do you wanna change the directory's name \($repo\)? \(y/n\)? " answer
+        read -p "Do you wanna change the directory\'s name \($repo\)? \(y/n\)? " answer
         case ${answer:0:1} in
             y|Y )
               read -p "Type the new name: " repo
@@ -128,11 +128,11 @@ fi
 read -p "Do you wanna link this project to another remote Git repository \(y/n\)? " answer
   case ${answer:0:1} in
     y|Y )
-        read -p "Type the repository's url: " input_variable
+        read -p "Type the repository\'s url: " input_variable
 
-        sudo git remote rename origin upstream
-        sudo git remote add origin $input_variable
-        sudo git push origin master
+        git remote rename origin upstream
+        git remote add origin $input_variable
+        git push origin master
 
         clear
         echo "...your project was successfully pushed!"
@@ -142,24 +142,24 @@ read -p "Do you wanna link this project to another remote Git repository \(y/n\)
     ;;
 esac
 
-read -p "Do you wanna install the project's dependencies now \(y/n\)? " answer
+read -p "Do you wanna install the project\'s dependencies now \(y/n\)? " answer
 case ${answer:0:1} in
     y|Y )
-        sudo npm install
+        npm install
         clear
         echo "...repository cloned!"
     ;;
     * )
-        echo "I'll do it later!"
+        echo "I\'ll do it later!"
     ;;
 esac
 
-read -p "Do you wanna add Android's platform to the project \(y/n\)? " answer
+read -p "Do you wanna add Android\'s platform to the project \(y/n\)? " answer
 case ${answer:0:1} in
     y|Y )
-        sudo tns platform add android
+        tns platform add android
         clear
-        echo "...Android's platform added!"
+        echo "...Android\'s platform added!"
     ;;
     * )
         echo "Not really!"
@@ -167,12 +167,12 @@ case ${answer:0:1} in
 esac
 
 if [ "$os" == "ios" ]; then
-  read -p "Do you wanna add iOS's platform to the project \(y/n\)? " answer
+  read -p "Do you wanna add iOS\'s platform to the project \(y/n\)? " answer
   case ${answer:0:1} in
       y|Y )
         sudo tns platform add ios
         clear
-        echo "iOS's platform added!"
+        echo "iOS\'s platform added!"
       ;;
       * )
         echo "No, Thanks!"

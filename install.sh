@@ -23,8 +23,6 @@ if [ $has_npm == false ]; then
         echo "Installing NPM..."
         sudo curl -L https://www.npmjs.com/install.sh | sh
         echo "...NPM version $(npm --version) installed!"
-    else
-        echo "No, I will do it for my self!"
     fi
 fi
 
@@ -37,8 +35,6 @@ if [ $has_node == false ]; then
         sudo n stable
         clear
         echo "...NodeJs version $(node --version) installed!"
-    else
-        echo "You're on your own!"
     fi
 fi
 
@@ -49,8 +45,6 @@ if [ $has_tns == false ]; then
         sudo npm install -g nativescript
         clear
         echo "...TNS version $(tns --version) installed!"
-    else
-        echo "hum..."
     fi
 fi
 
@@ -68,17 +62,11 @@ if [ $has_git == false ]; then
                     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
                     echo "Installing GIT..."
                     sudo brew install git
-                else
-                    echo "All right!"              
                 fi
-            else
-                echo "All right!"              
             fi
         fi
         clear
         echo "...$(git --version) installed!"
-    else
-        echo "Whaaat???"
     fi
 fi
 
@@ -89,8 +77,6 @@ if [ $has_project == false ]; then
             read -p "Do you wanna change the directory's name ($repo)? [y/n]? " answer < /dev/tty
             if [[ "$answer" == [Yy]* ]]; then
                 read -p "Type the new name: " repo < /dev/tty
-            else
-                echo "No, the current name is fine!"
             fi
 
             sudo git clone https://github.com/brab0/nativescript-kickstart $repo            
@@ -98,8 +84,6 @@ if [ $has_project == false ]; then
             has_project=true
             clear
             echo "...repository cloned!"
-        else  
-            echo "=("
         fi
     else
         echo "...we could not clone the projet because you don't have Git installed...told you!"
@@ -115,8 +99,6 @@ if [ $has_project == true ]; then
         sudo git push origin master
         clear
         echo "...your project was successfully pushed to another repository!"
-    else
-        echo "Not yet!"
     fi
 fi
 
@@ -127,8 +109,6 @@ if [ $has_project == true ]; then
             sudo npm install
             clear
             echo "...all dependencies installed!"
-        else
-            echo "I'll do it later!"
         fi
     else
         echo "We cannot install the project's dependencies 'cause you don't have npm installed...I told you!"
@@ -142,8 +122,6 @@ if [ $has_project == true ]; then
             tns platform add android
             clear
             echo "...Android platform added!"
-        else        
-            echo "Not really!"
         fi
         
         if [ "$os" == "ios" ]; then
@@ -152,8 +130,6 @@ if [ $has_project == true ]; then
                 tns platform add ios
                 clear
                 echo "iOS platform added!"
-            else
-                echo "No, Thanks!"
             fi 
         fi
     else

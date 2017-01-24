@@ -19,17 +19,13 @@ fi
 
 #if [ $has_npm == false ]; then
   read -p "This project requires NPM to work properly. Shall we install it for you \(y/n\)? " answer
-  case ${answer:0:1} in
-      [y|Y])
-          echo "Installing NPM..."
-          curl -L https://www.npmjs.com/install.sh | sh
-          echo "...NPM version $(npm --version) installed!"
-      ;;
-      * )
-          echo "No, I will do it for my self!"
-          break
-      ;;
-  esac
+  if [$answer == [y|Y]]; then
+    echo "Installing NPM..."
+    curl -L https://www.npmjs.com/install.sh | sh
+    echo "...NPM version $(npm --version) installed!"
+  else
+    echo "No, I will do it for my self!"
+  fi
 #fi
 
 #if [ $has_node == false ]; then

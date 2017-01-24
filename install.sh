@@ -1,5 +1,4 @@
 #!/bin/bash
-
 sudo true
 
 [ "$(which npm)" != "" ] && has_npm=true || has_npm=false

@@ -127,9 +127,9 @@ fi
 #  esac
 #fi
 
-read -p "Do you wanna link this project to another remote Git repository (y/n)? " answer
-  case ${answer:0:1} in
-    y|Y )
+#read -p "Do you wanna link this project to another remote Git repository (y/n)? " answer
+#  case ${answer:0:1} in
+#    y|Y )
         #read -p "Type the repository's url: " input_variable
 
         #sudo git remote rename origin upstream
@@ -137,12 +137,12 @@ read -p "Do you wanna link this project to another remote Git repository (y/n)? 
         #sudo git push origin master
 
         #clear
-        echo "...your project was successfully pushed!"
-    ;;
-    * )
-        echo "Not yet!"
-    ;;
-esac
+#        echo "...your project was successfully pushed!"
+#    ;;
+#    * )
+#        echo "Not yet!"
+#    ;;
+#esac
 
 read -p "Do you wanna install the project's dependencies now (y/n)? " answer
 case ${answer:0:1} in

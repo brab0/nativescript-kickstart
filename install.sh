@@ -18,7 +18,7 @@ else
 fi
 
 if [ $has_npm == false ]; then
-    read -p "This project requires NPM to work properly. Shall we install it for you [y/n]? " answer < /dev/tty
+    read -p "This project requires NPM. Do you wanna install it [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         echo "Installing NPM..."
         sudo curl -L https://www.npmjs.com/install.sh | sh
@@ -29,7 +29,7 @@ if [ $has_npm == false ]; then
 fi
 
 if [ $has_node == false ]; then
-    read -p "This project requires NodeJs to work properly. Shall we install it for you [y/n]? " answer < /dev/tty
+    read -p "This project requires NodeJs. Do you wanna install it [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         echo "Installing NodeJs..."
         sudo npm cache clean -f
@@ -43,7 +43,7 @@ if [ $has_node == false ]; then
 fi
 
 if [ $has_tns == false ]; then
-    read -p "This project requires NativeScript to work properly. Do you wanna install it globally [y/n]? " answer < /dev/tty
+    read -p "This project requires NativeScript(tns). Do you wanna install it globally [y/n]? " answer < /dev/tty
     if [ "$answer" == [Yy]* ]; then
         echo "Installing NativeScript..."
         sudo npm install -g nativescript
@@ -62,7 +62,7 @@ if [ $has_git == false ]; then
             sudo apt-get install git-all
         elif [ "$os" == "ios" ]; then
             if [ $has_brew == false ]; then
-                read -p "You need to install Homebrew. Do you want we install it for you \(y/n\)? " answer < /dev/tty
+                read -p "You need to install Homebrew. Do you want we install it for you [y/n]? " answer < /dev/tty
                 if [ "$answer" == [Yy]* ]; then
                     echo "Installing Homebrew..."
                     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -86,7 +86,7 @@ if [ $has_project == false ]; then
     if [ $has_git == true ]; then
         read -p "Do you wanna clone this NativeScript Kickstart project from Github repository [y/n]? " answer < /dev/tty
         if [ "$answer" == [Yy]* ]; then
-            read -p "Do you wanna change the directorys name ($repo)? [y/n]? " answer < /dev/tty
+            read -p "Do you wanna change the directory's name ($repo)? [y/n]? " answer < /dev/tty
             if [ "$answer" == [Yy]* ]; then
                 read -p "Type the new name: " repo < /dev/tty
             else
@@ -113,7 +113,7 @@ if [ $has_project == true ]; then
         git remote add origin $input_variable
         git push origin master
         clear
-        echo "...your project was successfully pushed!"
+        echo "...your project was successfully pushed to another repository!"
     else
         echo "Not yet!"
     fi
@@ -121,26 +121,26 @@ fi
 
 if [ $has_project == true ]; then
     if [ $has_npm == true ]; then
-        read -p "Do you wanna install the projects dependencies now [y/n]? " answer < /dev/tty
+        read -p "Do you wanna install the project's dependencies now [y/n]? " answer < /dev/tty
         if [ "$answer" == [Yy]* ]; then
             npm install
             clear
-            echo "...repository cloned!"
+            echo "...all dependencies installed!"
         else
             echo "I'll do it later!"
         fi
     else
-        echo "We cannot install the project's depencies 'cause you don't have npm installed...I told you!"
+        echo "We cannot install the project's dependencies 'cause you don't have npm installed...I told you!"
     fi
 fi
 
 if [ $has_project == true ]; then
     if [ $has_tns == true ]
-        read -p "Do you wanna add Androids platform to the project [y/n]? " answer < /dev/tty
+        read -p "Do you wanna add Android platform to the project [y/n]? " answer < /dev/tty
         if [ "$answer" == [Yy]* ]; then
             tns platform add android
             clear
-            echo "...Androids platform added!"
+            echo "...Android platform added!"
         else        
             echo "Not really!"
         fi

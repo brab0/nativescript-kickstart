@@ -18,7 +18,7 @@ else
 fi
 
 #if [ $has_npm == false ]; then
-  read -p "This project requires NPM to work properly. Shall we install it for you [y/n]? " answer
+  read -p "This project requires NPM to work properly. Shall we install it for you [y/n]? " answer < /dev/tty
   if [ "$answer" == [Yy]* ]; then
     echo "Installing NPM..."
     curl -L https://www.npmjs.com/install.sh | sh
